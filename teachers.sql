@@ -1,3 +1,5 @@
+-- kalo udah ada triggernya, teacher_id nanti di apus
+
 insert into teachers (TEACHER_ID, TEACHER_NAME, EMAIL, PASSWORD, JOB, COMPANY, COUNTRY, CREATED_AT) values ('TC001', 'Marketa De Cleyne', 'mde0@bing.com', 'q58Tm8', 'Operator', 'Photobean', 'China', timestamp '2019-12-12 09:48:04');
 insert into teachers (TEACHER_ID, TEACHER_NAME, EMAIL, PASSWORD, JOB, COMPANY, COUNTRY, CREATED_AT) values ('TC002', 'Janenna Hackinge', 'jhackinge1@delicious.com', 'UzgSnLpO', 'Senior Cost Accountant', 'Zoozzy', 'Ireland', timestamp '2020-04-01 18:13:46');
 insert into teachers (TEACHER_ID, TEACHER_NAME, EMAIL, PASSWORD, JOB, COMPANY, COUNTRY, CREATED_AT) values ('TC003', 'Lurline Bucktrout', 'lbucktrout2@ezinearticles.com', 'd1YC1IpD75', 'Business Systems Development Analyst', 'Jaxspan', 'Finland', timestamp '2019-05-09 08:59:31');
