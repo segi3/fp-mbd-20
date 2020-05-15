@@ -1,3 +1,6 @@
+-- table invoice
+-- count +~ 100
+
 -- kalo udah ada triggernya, invoice_id nanti di apus
 
 insert into invoice (course_id, student_id, method_id, invoice_id, total_price, diskon, created_at)values('C0001', 'ST001', '1', 'INV00001', 140000, 0, timestamp '2020-04-28 08:54:26');

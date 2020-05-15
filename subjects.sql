@@ -1,3 +1,6 @@
+-- table subjects
+-- count 8
+
 insert into subjects (SUBJECT_ID, SUBJECT_NAME) values (1, 'Development');
 insert into subjects (SUBJECT_ID, SUBJECT_NAME) values (2, 'Business');
 insert into subjects (SUBJECT_ID, SUBJECT_NAME) values (3, 'Finance & Accounting');

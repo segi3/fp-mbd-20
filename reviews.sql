@@ -1,6 +1,9 @@
+-- table reviews
+-- count 8
+
 -- kalo udah ada triggernya, review_id nanti di apus
 
--- reviewnya masih dummy ntar diganti
+-- reviewnya masih dummy ntar ganti
 
 insert into reviews values ('ST001', 'REV0001', 'C0001', '4', 'lorem ipsum', timestamp '2020-04-28 08:54:26');
 insert into reviews values ('ST002', 'REV0002', 'C0001', '5', 'lorem ipsum', timestamp '2020-04-28 08:54:26');

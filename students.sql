@@ -1,3 +1,6 @@
+-- table students
+-- count 100
+
 -- kalo udah ada triggernya, student_id nanti di apus
 
 insert into students (STUDENT_ID, STUDENT_NAME, EMAIL, PASSWORD, COUNTRY, SCHOOL, CREATED_AT) values ('ST001', 'Carolyne Gooderson', 'cgooderson0@t.co', '4VUVcT', 'Germany', 'Lutherische Theologische Hochschule Oberursel', timestamp '2019-09-19 07:43:28');
