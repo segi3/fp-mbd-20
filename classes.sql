@@ -1,7 +1,7 @@
 -- table classes
 -- count +~ 800
 
--- sequence : yaboi
+-- sequence : rafi nizar
 create sequence class_sequence
     minvalue 1
     maxvalue 9999
@@ -17,7 +17,7 @@ create or replace function next_class_sequence
     end;
 /
 
--- trigger : yaboi
+-- trigger : rafi nizar
 
 create or replace trigger trigger_insert_classes
     before insert on classes
