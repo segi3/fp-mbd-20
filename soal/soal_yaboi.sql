@@ -29,6 +29,19 @@ left outer join (
 left outer join subjects sb on sb.subject_id = cs.subject_id
 order by cs.course_name;
 
+-- trigger : menjalankan sequence menghitung class_id saat melakukan operasi insert
+--           pada tabel classes
+
+create or replace trigger trigger_insert_classes
+    before insert on classes
+    for each row
+    begin
+        if :new.class_id is null then
+            select next_class_sequence into :new.class_id from dual;
+        end if;
+    end;
+/
+
 -- sequence : menghitung class_id secara urut
 create sequence class_sequence
     minvalue 1
