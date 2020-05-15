@@ -40,7 +40,6 @@ create or replace trigger trigger_insert_classes
             select next_class_sequence into :new.class_id from dual;
         end if;
     end;
-/
 
 -- sequence : menghitung class_id secara urut
 create sequence class_sequence
@@ -49,7 +48,7 @@ create sequence class_sequence
     start with 1
     increment by 1
     cache 20;
-/
+
 create or replace function next_class_sequence
     return varchar2
     as
@@ -78,7 +77,7 @@ create or replace procedure teacher_income
             dbms_output.put_line(RPAD(pt.teacher_name, 64) || 'RP ' || pt.total_income);
         end loop;
     end;
-/
+
 execute teacher_income;
 
 -- function : Mendapatkan teacher dengan rating review course tertinggi dan student paling banyak
@@ -112,5 +111,5 @@ create or replace function best_teacher
         end loop;
         return best_tc;
     end;
-/
+
 select best_teacher() from dual;
