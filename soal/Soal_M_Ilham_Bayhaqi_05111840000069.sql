@@ -1,3 +1,6 @@
+-- Nama : Muhammad Ilham Bayhaqi
+-- NRP  : 05111840000069
+
 --
 -- Procedure untuk melakukan enkirpsi password
 CREATE OR REPLACE PROCEDURE setEncryptPassword
