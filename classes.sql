@@ -9,13 +9,6 @@ create sequence class_sequence
     increment by 1
     cache 20;
 /
-create or replace function next_class_sequence
-    return varchar2
-    as
-    begin
-        return('CL' || to_char(class_sequence.nextval, 'fm0000'));
-    end;
-/
 
 -- trigger : rafi nizar
 
@@ -24,7 +17,7 @@ create or replace trigger trigger_insert_classes
     for each row
     begin
         if :new.class_id is null then
-            select next_class_sequence into :new.class_id from dual;
+            :new.class_id := ('CL' || to_char(class_sequence.nextval, 'fm0000'));
         end if;
     end;
 /

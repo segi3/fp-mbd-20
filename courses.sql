@@ -1,9 +1,6 @@
 -- table courses
 -- count +~ 400
 
--- kalo udah ada triggernya, course_id nanti di apus
-
---
 -- Sequence penomoran (M. Ilham Bayhaqi)
 CREATE SEQUENCE course_sequence
 minvalue 1
