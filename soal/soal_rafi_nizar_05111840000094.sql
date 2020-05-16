@@ -16,7 +16,7 @@ inner join (
     select course_id
     from courses
 ) cs on cs.course_id = cl.course_id
-where cs.course_id = 'C0001'
+where cs.course_id = 'C0102'
 order by st.country;
 
 -- select : nama kelas, course kelas, dan subject kelas
@@ -37,7 +37,7 @@ create or replace trigger trigger_insert_classes
     for each row
     begin
         if :new.class_id is null then
-            select next_class_sequence into :new.class_id from dual;
+            :new.class_id := ('CL' || to_char(class_sequence.nextval, 'fm0000'));
         end if;
     end;
 
@@ -49,12 +49,12 @@ create sequence class_sequence
     increment by 1
     cache 20;
 
-create or replace function next_class_sequence
-    return varchar2
-    as
-    begin
-        return('CL' || to_char(class_sequence.nextval, 'fm0000'));
-    end;
+-- create or replace function next_class_sequence
+--     return varchar2
+--     as
+--     begin
+--         return('CL' || to_char(class_sequence.nextval, 'fm0000'));
+--     end;
 
 -- procedure : menampilkan pendapatan setiap teacher
 create or replace procedure teacher_income
@@ -74,10 +74,10 @@ create or replace procedure teacher_income
     begin
         for pt in p_inc
         loop
-            dbms_output.put_line(RPAD(pt.teacher_name, 64) || 'RP ' || pt.total_income);
+            dbms_output.put_line(RPAD(pt.teacher_name, 32) || 'RP ' || pt.total_income);
         end loop;
     end;
-
+/
 execute teacher_income;
 
 -- function : Mendapatkan teacher dengan rating review course tertinggi dan student paling banyak
@@ -111,5 +111,5 @@ create or replace function best_teacher
         end loop;
         return best_tc;
     end;
-
+/
 select best_teacher() from dual;
