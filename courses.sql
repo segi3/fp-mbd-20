@@ -3,6 +3,28 @@
 
 -- kalo udah ada triggernya, course_id nanti di apus
 
+--
+-- Sequence penomoran (M. Ilham Bayhaqi)
+CREATE SEQUENCE course_sequence
+minvalue 1
+maxvalue 9999
+start with 1
+increment by 1
+cache 20;
+
+
+--
+-- Trigger penomoran course (M. Ilham Bayhaqi)
+CREATE OR REPLACE TRIGGER next_course_sequence
+BEFORE INSERT ON courses
+FOR EACH ROW
+BEGIN
+    IF :new.course_id IS NULL THEN
+        :new.course_id := ('C' || TO_CHAR(course_sequence.nextval, 'FM0000'));
+    END IF;
+END;
+
+
 insert into courses (course_id, teacher_id, subject_id, description, price, course_name, created_at)  values ('C0001', 'TC001', '1', 'Learn the transformational Achology Life Coaching process and become ahighly skilled, Achology certified Life Coach', '140000', 'Life Coaching', timestamp '2020-04-28 08:54:26');
 insert into courses (course_id, teacher_id, subject_id, description, price, course_name, created_at)  values ('C0002', 'TC002', '2', 'Learn to create Machine Learning Algorithms', '140000', 'Machine Learning : PHYTON!!', timestamp '2020-04-28 08:54:26');
 insert into courses (course_id, teacher_id, subject_id, description, price, course_name, created_at)  values ('C0003', 'TC042', '1', 'Learn the Assembly Language programming language in Beginner level', '140000', 'Assembly Language for Beginners', timestamp '2018-05-18 16:19:19');
