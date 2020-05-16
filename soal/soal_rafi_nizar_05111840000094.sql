@@ -22,11 +22,11 @@ order by st.country;
 -- select : nama kelas, course kelas, dan subject kelas
 select cl.class_name, cs.course_name, sb.subject_name
 from classes cl
-left outer join (
+inner join (
     select course_id, course_name, subject_id
     from courses
 ) cs on cs.course_id = cl.course_id
-left outer join subjects sb on sb.subject_id = cs.subject_id
+inner join subjects sb on sb.subject_id = cs.subject_id
 order by cs.course_name;
 
 -- trigger : menjalankan sequence menghitung class_id saat melakukan operasi insert
@@ -49,13 +49,6 @@ create sequence class_sequence
     increment by 1
     cache 20;
 
--- create or replace function next_class_sequence
---     return varchar2
---     as
---     begin
---         return('CL' || to_char(class_sequence.nextval, 'fm0000'));
---     end;
-
 -- procedure : menampilkan pendapatan setiap teacher
 create or replace procedure teacher_income
     as
@@ -66,11 +59,12 @@ create or replace procedure teacher_income
             select course_id, teacher_id
             from courses
         ) cs on cs.teacher_id = tc.teacher_id
-        left outer join (
+        inner join (
             select course_id, total_price
             from invoice
         )iv on iv.course_id = cs.course_id
-        group by tc.teacher_name;
+        group by tc.teacher_name
+        order by total_income desc;
     begin
         for pt in p_inc
         loop
@@ -101,7 +95,7 @@ create or replace function best_teacher
             from reviews
             group by course_id
         ) a on a.course_id = cs.course_id
-        order by std_count desc, course_rating desc
+        order by std_count desc, course_rating desc, tc.teacher_name asc
         fetch first 1 row only;
     begin
         for pt in p_tc
