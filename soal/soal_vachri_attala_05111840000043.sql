@@ -69,7 +69,9 @@ begin
     fetch first 1 rows only;
     return o_name;
 end;
+                                                
 --untuk mengetes fungsi
+                                                
 select c.class_id, tertinggi_di_kelas(c.class_id), cstd.score
 from classes c
 inner join classes_students cstd on cstd.class_id = c.class_id
