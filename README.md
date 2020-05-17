@@ -2,12 +2,14 @@
 ## FP MBD-B 2020
 
 ### Kelompok **01**: Sistem E-Learning
-Vachri A. P.   `05111840000043`
-M. Ilham Bayhaqi  `051111840000069`
-Michael Ricky `051111840000078`
-Rafi Nizar Abiyyi `051111840000094`
-Patrick C. W. `051111840000098`
-Reihan Nanda `051111840000132`
+
+ - Vachri A. P.   `05111840000043`
+ - M. Ilham Bayhaqi  `051111840000069`
+ - Michael Ricky `051111840000078`
+ -  Rafi Nizar Abiyyi `051111840000094`
+ - Patrick C. W. `051111840000098`
+ - Reihan Nanda `051111840000132`
+
 
 #### Isi repository:
 DDL:
@@ -28,6 +30,7 @@ DML :
  - [Insert Shopping_Cart](https://github.com/segi3/fp-mbd-20/blob/master/shopping%20carts.sql)
  
  Jawaban Soal
+ 
 
  - [Soal Vachri A. P.](https://github.com/segi3/fp-mbd-20/blob/master/soal/soal_vachri_attala_05111840000043.sql)
  - [Soal M. Ilham Bayhaqi](https://github.com/segi3/fp-mbd-20/blob/master/soal/Soal_M_Ilham_Bayhaqi_05111840000069.sql)
