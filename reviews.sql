@@ -1,7 +1,7 @@
 -- table reviews
 -- count 8
 
--- kalo udah ada triggernya, review_id nanti di apus
+-- sequence : reihan nanda
 create sequence review_seq 
 minvalue 1   
 maxvalue 9999   
@@ -9,6 +9,7 @@ start with 1
 increment by 1   
 cache 20
 
+-- trigger : reihan nanda
 CREATE OR REPLACE TRIGGER next_review_trigger  
 BEFORE INSERT ON    Reviews
 FOR EACH ROW  

@@ -9,8 +9,6 @@ start with 1
 increment by 1
 cache 20;
 
-
---
 -- Trigger penomoran course (M. Ilham Bayhaqi)
 CREATE OR REPLACE TRIGGER next_course_sequence
 BEFORE INSERT ON courses
