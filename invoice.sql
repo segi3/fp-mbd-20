@@ -38,7 +38,7 @@ WHERE courses.course_id = invoice.course_id
 AND EXTRACT(MONTH FROM SYSDATE) = EXTRACT(MONTH FROM invoice.created_at)
 AND EXTRACT(YEAR FROM SYSDATE) = EXTRACT(YEAR FROM invoice.created_at)
 GROUP BY course_name
-ORDER BY jumlah_pembeli;
+ORDER BY jumlah_pembeli DESC;
 /
 
 --Soal 6: Function mereturn course dengan harga termurah dari course dgn peserta terbanyak dalam jangka waktu tertentu (Input per bulan)
