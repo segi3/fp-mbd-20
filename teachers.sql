@@ -1,9 +1,25 @@
 -- table teachers
 -- count 100
 
--- sequence : patrick
+-- Sequence penomoran id teacher(Patrick C.W)
+CREATE SEQUENCE tcid_seq
+    MINVALUE 1
+    MAXVALUE 9999
+    START WITH 100
+    INCREMENT BY 1
+    CACHE 20;
+Keterangan : Mulai dari 100 karena sebelumnya sudah ada entry 100 data. Jika dari awal kosong, sequence ditulis start with 1 
 
--- trigger : patrick
+-- Trigger penomoran id teacher (Patrick C.W.)
+CREATE OR REPLACE TRIGGER tcid_trig  
+BEFORE INSERT ON teachers
+FOR EACH ROW  
+BEGIN  
+    IF :new.teacher_id IS NULL THEN  
+        :new.teacher_id := ('TC' || TO_CHAR(tcid_seq.nextval, 'FM000'));  
+    END IF;  
+END;
+
 
 insert into teachers (TEACHER_ID, TEACHER_NAME, EMAIL, PASSWORD, JOB, COMPANY, COUNTRY, CREATED_AT) values ('TC001', 'Timi Grinov', 'tgrinov0@jalbum.net', 'sn8U8pZTVAs', 'Paralegal', 'Realcube', 'China', timestamp '2019-12-21 17:07:27');
 insert into teachers (TEACHER_ID, TEACHER_NAME, EMAIL, PASSWORD, JOB, COMPANY, COUNTRY, CREATED_AT) values ('TC002', 'Anatole Brehault', 'abrehault1@cafepress.com', 'oBuLFt0v', 'Sales Representative', 'Photofeed', 'Russia', timestamp '2017-08-11 06:25:06');
