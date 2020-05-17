@@ -2,8 +2,23 @@
 -- count 100
 
 -- sequence : vachri
-
+create sequence students_sequence
+    minvalue 1
+    maxvalue 9999
+    start with 1
+    increment by 1
+    cache 20;
+/
 -- trigger : vachri
+create or replace trigger trigger_insert_student_id
+    before insert on students
+    for each row
+    begin
+        if :new.student_id is null then
+            :new.student_id := ('ST' || TO_CHAR(students_sequence.nextval, 'FM000'));
+        end if;
+    end;
+/
 
 insert into students (STUDENT_ID, STUDENT_NAME, EMAIL, PASSWORD, COUNTRY, SCHOOL, CREATED_AT) values ('ST001', 'Carolyne Gooderson', 'cgooderson0@t.co', '4VUVcT', 'Germany', 'Lutherische Theologische Hochschule Oberursel', timestamp '2019-09-19 07:43:28');
 insert into students (STUDENT_ID, STUDENT_NAME, EMAIL, PASSWORD, COUNTRY, SCHOOL, CREATED_AT) values ('ST002', 'Blythe Lundbeck', 'blundbeck1@archive.org', 'tEgUJzow', 'Nigeria', 'Oduduwa University', timestamp '2020-03-25 18:22:25');
