@@ -1,5 +1,5 @@
 -- table classes_students
--- count +~ 800
+-- count 800
 
 insert into classes_students values ('CL0001', 'ST001', 79);
 insert into classes_students values ('CL0001', 'ST002', 77);

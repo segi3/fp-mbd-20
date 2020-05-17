@@ -1,5 +1,5 @@
 -- table classes
--- count +~ 800
+-- count 800
 
 -- sequence : rafi nizar
 create sequence class_sequence

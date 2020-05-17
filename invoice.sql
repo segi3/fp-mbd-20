@@ -1,5 +1,5 @@
 -- table invoice
--- count +~ 1000
+-- count 1000
 
 --Soal 4: Sequence Invoice (Auto ID Numbering)
 DROP SEQUENCE seq_invoice;

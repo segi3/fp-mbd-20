@@ -1,5 +1,5 @@
 -- table payment_methods
--- count
+-- count 12
 
 insert into payment_methods values ('1', 'Bank Transfer');
 insert into payment_methods values ('2', 'Dana');

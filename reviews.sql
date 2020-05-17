@@ -1,5 +1,5 @@
 -- table reviews
--- count 8
+-- count 120
 
 -- sequence : reihan nanda
 create sequence review_seq 

@@ -1,5 +1,5 @@
 -- table courses
--- count +~ 400
+-- count 400
 
 -- Sequence penomoran (M. Ilham Bayhaqi)
 CREATE SEQUENCE course_sequence
