@@ -55,5 +55,23 @@ begin
    END LOOP;
 end;
 
--- funsction Menampilkan student dengan nilai tertinggi dari suatu kelas
-
+-- function Menampilkan student dengan nilai tertinggi dari suatu kelas
+create or replace function tertinggi_di_kelas (in_class_id in varchar2)
+return varchar2
+as
+    o_name varchar(128);
+begin
+    select std.student_name into o_name
+    from students std
+    inner join classes_students cstd on cstd.student_id = std.student_id
+    where cstd.class_id = in_class_id
+    order by cstd.score desc
+    fetch first 1 rows only;
+    return o_name;
+end;
+--untuk mengetes fungsi
+select c.class_id, tertinggi_di_kelas(c.class_id), cstd.score
+from classes c
+inner join classes_students cstd on cstd.class_id = c.class_id
+inner join students std on std.student_id = cstd.student_id
+where std.student_name = tertinggi_di_kelas(c.class_id);
