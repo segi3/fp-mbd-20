@@ -3,6 +3,7 @@
 
 -- 1.a Select Siswa yang memberikan rating 5 ke course dan tampilkan id review, id siswa, nama, siswa, id course, kata kata review, dan tanggal pembuatan review tersebut
 Query: 
+
 select rv.review_id, rv.student_id, st.student_name, rv.course_id ,rv.review_text,rv.created_at 
 from reviews rv, students st
 where rv.student_id = st.student_id
@@ -24,6 +25,8 @@ order by total_use desc
 
 
 -- 2. Sequence untuk men-'generate' ID Review secara otomatis
+Query:
+
 create sequence review_seq 
 minvalue 1   
 maxvalue 9999   
@@ -32,6 +35,8 @@ increment by 1
 cache 20
 
 -- 3. Trigger untuk melakukan concatenate ID menggunakan kode khusus diikuti oleh nomor urutan
+Query:
+
 CREATE OR REPLACE TRIGGER next_review_trigger  
 BEFORE INSERT ON    Reviews
 FOR EACH ROW  
