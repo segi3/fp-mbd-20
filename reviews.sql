@@ -2,14 +2,30 @@
 -- count 8
 
 -- kalo udah ada triggernya, review_id nanti di apus
+create sequence review_seq 
+minvalue 1   
+maxvalue 9999   
+start with 1   
+increment by 1   
+cache 20
+
+CREATE OR REPLACE TRIGGER next_review_trigger  
+BEFORE INSERT ON    Reviews
+FOR EACH ROW  
+BEGIN  
+    IF :new.review_id IS NULL THEN  
+        :new.review_id := ('REV' || TO_CHAR(review_seq.nextval, 'FM0000'));  
+    END IF;  
+END;  
+
 
 -- reviewnya masih dummy ntar ganti
 -- reviewnya udah sesuai invoice
-insert into reviews values ('ST030', 'REV0001', 'C0371', '4', 'lorem ipsum', timestamp '2020-03-25 05:11:27');
-insert into reviews values ('ST086', 'REV0002', 'C0294', '4', 'lorem ipsum', timestamp '2020-04-18 10:03:32');
-insert into reviews values ('ST080', 'REV0003', 'C0191', '4', 'lorem ipsum', timestamp '2020-03-11 20:15:52');
-insert into reviews values ('ST012', 'REV0004', 'C0203', '5', 'lorem ipsum', timestamp '2020-05-12 00:01:24');
-insert into reviews values ('ST089', 'REV0005', 'C0202', '5', 'lorem ipsum', timestamp '2020-05-16 05:20:37');
+insert into reviews values ('ST030', 'NULL', 'C0371', '4', 'lorem ipsum', timestamp '2020-03-25 05:11:27');
+insert into reviews values ('ST086', 'NULL', 'C0294', '4', 'lorem ipsum', timestamp '2020-04-18 10:03:32');
+insert into reviews values ('ST080', 'NULL', 'C0191', '4', 'lorem ipsum', timestamp '2020-03-11 20:15:52');
+insert into reviews values ('ST012', 'NULL', 'C0203', '5', 'lorem ipsum', timestamp '2020-05-12 00:01:24');
+insert into reviews values ('ST089', 'NULL', 'C0202', '5', 'lorem ipsum', timestamp '2020-05-16 05:20:37');
 insert into reviews values ('ST009', 'REV0006', 'C0233', '5', 'lorem ipsum', timestamp '2020-03-06 06:55:24');
 insert into reviews values ('ST026', 'REV0007', 'C0078', '3', 'lorem ipsum', timestamp '2020-05-16 17:54:57');
 insert into reviews values ('ST032', 'REV0008', 'C0093', '5', 'lorem ipsum', timestamp '2020-05-04 13:49:38');
