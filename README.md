@@ -8,7 +8,7 @@
  - Michael Ricky `051111840000078`
  -  Rafi Nizar Abiyyi `051111840000094`
  - Patrick C. W. `051111840000098`
- - Reihan Nanda `051111840000132`
+ - Reihan Nanda R.`051111840000132`
 
 
 #### Isi repository:
