@@ -37,5 +37,5 @@ DML :
  - [Soal Michael Ricky](https://github.com/segi3/fp-mbd-20/blob/master/soal/Soal_Michael_Ricky_05111840000078.sql)
  - [Soal Rafi Nizar A.](https://github.com/segi3/fp-mbd-20/blob/master/soal/soal_rafi_nizar_05111840000094.sql)
  - [Soal Patrick C.W.](https://github.com/segi3/fp-mbd-20/blob/master/soal/Soal_Patrick_Cipta_Winata_05111840000098.sql)
- - Soal Reihan Nanda
+ - [Soal Reihan Nanda Ramadhan](https://github.com/segi3/fp-mbd-20/blob/master/soal/Reihan_Nanda_Ramadhan_05111840000132.sql)
 
