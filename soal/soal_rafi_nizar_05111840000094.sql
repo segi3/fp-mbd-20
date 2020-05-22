@@ -2,7 +2,10 @@
 -- 05111840000094
 
 -- select : select semua nama dan country student serta nama kelas yang diambil dalam suatu course tertetu
-select st.student_name, st.country, cl.class_name
+
+kelompokkan bersararkan negara, jumlah per negara
+
+select st.student_name, st.country, cl.class_name, count_country_query1('C0102', st.country)
 from students st
 inner join (
     select student_id, class_id
@@ -19,19 +22,92 @@ inner join (
 where cs.course_id = 'C0102'
 order by st.country;
 
+create or replace function count_country_query1(id_course_param in varchar2, country_name_param in varchar2)
+return number
+as
+    count_country number;
+begin
+    select count(st.country) into count_country
+    from students st
+    inner join (
+        select student_id, class_id
+        from classes_students
+    ) cstd on cstd.student_id = st.student_id
+    inner join (
+        select class_id, class_name, course_id
+        from classes
+    ) cl on cl.class_id = cstd.class_id
+    inner join (
+        select course_id
+        from courses
+    ) cs on cs.course_id = cl.course_id
+    where cs.course_id = id_course_param
+    and st.country = country_name_param
+    group by st.country;
+
+    return count_country;
+end;
+
+
+select st.student_name, st.country, cl.class_name,(
+    select count(st.country)
+    from students st
+    inner join (
+        select student_id, class_id
+        from classes_students
+    ) cstd on cstd.student_id = st.student_id
+    inner join (
+        select class_id, class_name, course_id
+        from classes
+    ) cl on cl.class_id = cstd.class_id
+    inner join (
+        select course_id
+        from courses
+    ) cs on cs.course_id = cl.course_id
+    where cs.course_id = 'C0102'
+) as count_country
+from students st
+inner join (
+    select student_id, class_id
+    from classes_students
+) cstd on cstd.student_id = st.student_id
+inner join (
+    select class_id, class_name, course_id
+    from classes
+) cl on cl.class_id = cstd.class_id
+inner join (
+    select course_id
+    from courses
+) cs on cs.course_id = cl.course_id
+where cs.course_id = 'C0102'
+order by st.country;
+
+
+
+
 -- select : nama kelas, course kelas, dan subject kelas
-select cl.class_name, cs.course_name, sb.subject_name
+
+5 course name terfavorit, count std paling banyak, jumlah, urut asc
+
+
+select cl.class_name, cs.course_name, sb.subject_name, b.std_count
 from classes cl
 inner join (
     select course_id, course_name, subject_id
     from courses
 ) cs on cs.course_id = cl.course_id
+inner join (
+    select cl.course_id as course_id, count(cstd.student_id) as std_count
+    from classes_students cstd, classes cl
+    where cstd.class_id = cl.class_id
+    group by cl.course_id
+    order by std_count desc
+) b on b.course_id = cs.course_id
 inner join subjects sb on sb.subject_id = cs.subject_id
 order by cs.course_name;
 
 -- trigger : menjalankan sequence menghitung class_id saat melakukan operasi insert
 --           pada tabel classes
-
 create or replace trigger trigger_insert_classes
     before insert on classes
     for each row
@@ -41,6 +117,7 @@ create or replace trigger trigger_insert_classes
         end if;
     end;
 
+
 -- sequence : menghitung class_id secara urut
 create sequence class_sequence
     minvalue 1
@@ -48,6 +125,7 @@ create sequence class_sequence
     start with 1
     increment by 1
     cache 20;
+
 
 -- procedure : menampilkan pendapatan setiap teacher
 create or replace procedure teacher_income
